@@ -1,0 +1,183 @@
+<!DOCTYPE htlml>
+<html>
+    <head>
+        <title>
+            Assignment 2
+        </title>
+    </head>
+    <style>
+        #body{
+            background-image:url(http://www.desktopwallpaperhd.net/wallpapers/7/6/background-homepage-web-wood-opera-media-images-79414.jpg)
+        }
+        #buttonbar{
+            display: inline-block;
+            height:100px;
+            width: 100vw;
+        }
+        #clearbutton{
+            position: relative;
+            display: inline-block;
+            width: 75px;
+            height: 75px;
+            top:0px;
+            right:0px;
+            
+        }
+        #Add{
+            height: 75px;
+            width: 75px;
+        }
+        #Clear{
+            position: absolute;
+            height: 75px;
+            width: 75px;
+            left: 94vw;
+            top:-100px;
+            display: inline-block;
+            
+        }
+        #Created{
+            position:fixed;
+            width: 100vw;
+            height: 60px;
+            bottom:1000px;
+            border: 2px solid;
+            text-align: center;
+            transition: top, 0.5s;
+            background-color:rgba(0,191,237,0.7);
+            z-index: 1;
+        }
+        #Cleared{
+            position:fixed;
+            width: 100vw;
+            height: 60px;
+            bottom:1000px;
+            left:center;
+            border: 2px solid;
+            text-align: center;
+            transition: top, 0.5s;
+            background-color:rgba(255,140,0,0.7);
+            z-index: 1;
+        }
+        #msg{
+            position:relative;
+            display:block;
+        }
+        #url{
+            position:relative;
+            display:inline-block;
+        }
+        #text{
+            position:relative;
+            display:block;
+        }
+        
+    </style>
+    <body id='body'>
+        <div id='Created'>
+            <h3 id='status'>Created Item</h3>
+        </div>
+        <div id='Cleared'>
+            <h3 id='status2'>Cleared Item</h3>
+        </div>
+        <div id='buttonbar'>
+        <button id='Add'>Add</button>
+        <input type='text' placeholder='message' id='msg'/>
+        <input type='url' placeholder='picture url' id='url'/>
+        <input type='text' placeholder='text' id='text'/>
+        </div>
+        <div id=clearbutton>
+        <button id='Clear'>Clear</button>
+        </div>
+        <div id='mainbody'>
+        </div>
+    <script>
+        var mainbody=document.getElementById('mainbody')
+        var cleardiv=document.getElementById('Cleared')
+        var clearbut=document.getElementById('Clear')
+        var newtext=document.getElementById('text');
+        var createddiv=document.getElementById('Created');
+        var url=document.getElementById('url');
+        var msgInput=document.getElementById('msg');
+        var addbut=document.getElementById('Add');
+        addbut.onclick=function(){
+            var newObj= document.createElement('div');
+            mainbody.appendChild(newObj);
+            newObj.classname='newobj';
+            newObj.style.width = '41vw';
+            newObj.style.height = '200px';
+            newObj.style.backgroundColor = 'red';
+            newObj.style.position = 'relative';
+            newObj.style.left = 'center';
+            newObj.style.border='3px solid'
+            newObj.style.margin='auto';
+            newObj.style.borderRadius='50px';
+            
+            createddiv.style.bottom = '0px';
+            cleardiv.style.bottom='1000px'
+            
+            var newImg= document.createElement('img');
+            newObj.appendChild(newImg);
+            newImg.src=url.value;
+            newImg.classname='imageThumb';
+            newImg.style.height='200px';
+            newImg.style.width='200px';
+            newImg.style.borderRadius='100px';
+            newImg.style.border= '2px solid';
+            
+            var newpic= document.createElement('div');
+            newObj.appendChild(newpic);
+            newpic.classname='newpic';
+            newpic.style.width='10vw';
+            newpic.style.height='200px';
+            newpic.style.display='inline-block';
+            newpic.style.borderRadius='50px';
+            var pics= document.createElement('img');
+            newpic.appendChild(newImg);
+            newImg.src=url.value;
+            newImg.classname='imageThumb';
+            newImg.style.height='200px';
+            
+            var newinnard= document.createElement('div');
+            newObj.appendChild(newinnard);
+            newinnard.classname='newinnard';
+            newinnard.style.width = '30vw';
+            newinnard.style.height = '90px';
+            newinnard.style.backgroundColor='blue';
+            newinnard.style.position='relative';
+            newinnard.style.float = 'left';
+            newinnard.innerHTML = msgInput.value;
+            newinnard.style.textAlign='center';
+            newinnard.style.border='1px solid';
+            newinnard.style.borderRadius='125px';
+            
+            var newinnard2= document.createElement('div');
+            newObj.appendChild(newinnard2);
+            newinnard2.classname='newinnard2';
+            newinnard2.style.width = '30vw';
+            newinnard2.style.height = '90px';
+            newinnard2.style.border = '1px solid';
+            newinnard2.style.position='relative';
+            newinnard2.style.backgroundColor='green';
+            newinnard2.style.top='-100px';
+            newinnard2.innerHTML = newtext.value;
+            newinnard2.style.textAlign='center';
+            newinnard2.style.borderRadius='125px';
+            
+            var newblank= document.createElement('div');
+            document.body.appendChild(newblank);
+            newblank.classname='newblank';
+            newblank.style.width = '80vw';
+            newblank.style.height = '10px';
+            newblank.style.position = 'relative';
+            newblank.style.left = 'center';
+            newblank.backgroundColor= 'white';
+            }
+        clearbut.onclick=function(){
+            createddiv.style.bottom='1000px';
+            cleardiv.style.bottom='0px';
+            mainbody.innerHTML = '';
+        }
+    </script>
+    </body>
+</html>
